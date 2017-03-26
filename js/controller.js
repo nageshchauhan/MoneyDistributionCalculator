@@ -45,6 +45,7 @@
 				$scope.page1=true;
 			}
 		};
+
 		$scope.removeItem=function(item){
 			var index = $scope.masterList.indexOf(item);
 			$scope.masterList.splice(index,1);
@@ -55,3 +56,4 @@
 		};
 	}]);
 })();
+
