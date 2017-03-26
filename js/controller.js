@@ -45,5 +45,13 @@
 				$scope.page1=true;
 			}
 		};
+		$scope.removeItem=function(item){
+			var index = $scope.masterList.indexOf(item);
+			$scope.masterList.splice(index,1);
+			$scope.totalAmt=0;
+			$scope.masterList.forEach(function(d){
+				$scope.totalAmt+=d.contiAmt;
+			});
+		};
 	}]);
 })();
