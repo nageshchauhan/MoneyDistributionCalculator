@@ -35,8 +35,8 @@
 							<td data-ng-bind="$index+1"></td>
 							<td data-ng-bind="obj.contiName"></td>
 							<td>&#8377; {{obj.contiAmt}}</td>
-							<td data-ng-bind="obj.desc"></td>
-							<td><img src="img/remove.png" style="height:1vw;width:1vw;cursor:pointer;"/></td>
+							<td data-ng-bind="obj.desc"><
+							<td><img src="img/remove.png" style="height:1vw;width:1vw;cursor:pointer;" data-ng-click="removeItem(obj)"/></td>
 						</tr>
 						<tr>
 							<td colspan="2" style="border-top:1px solid grey;">Total Amount Spent </td>
