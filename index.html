@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Money distribution Calculator</title>
+        <script src="js/angular.min.js"></script>
+        <link href="css/style.css" rel="stylesheet">
+	</head>
+    <body data-ng-app="moneyDistributionCalc">
+		<div class="main" ng-controller="distributionCalcController">
+			<div class="heading align-center justify-center flex">Money Distribution Calculator</div>
+			<div id="page1" ng-show="page1" data-ng-init="page1=true">
+			
+			<div class="flex align-center" style="margin:1vw 25vw 0.2vw 25vw;">
+				<input id='nameID' type="text" placeholder="Enter Person name" ng-model="contiName"/>
+				<input id='amtID' type="text" placeholder="Contribution Amount" ng-model="contiAmt"/>
+				<img src="img/add.png" style="height:3vw;width:4vw;cursor:pointer;" ng-click="addConti()" />				
+			</div>
+			<div class="flex" style="margin-left:25vw;">
+				<textarea id="desc" ng-model="desc" placeholder="Description"></textarea>
+			</div>
+			<div class="margin-20" style="font-size: 1.7vw;"  data-ng-show="masterList.length>0">
+				<div class="flex justify-center">
+				<table border="1">
+					<thead>
+						<tr>
+							<th>Sr. No.</th>
+							<th>Contributor Name</th>
+							<th>Contributtion Amount</th>
+							<th>Description</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="obj in masterList" ng-class={'colorOdd':$index%2==1}>
+							<td data-ng-bind="$index+1"></td>
+							<td data-ng-bind="obj.contiName"></td>
+							<td>&#8377; {{obj.contiAmt}}</td>
+							<td data-ng-bind="obj.desc"></td>
+							<td><img src="img/remove.png" style="height:1vw;width:1vw;cursor:pointer;"/></td>
+						</tr>
+						<tr>
+							<td colspan="2" style="border-top:1px solid grey;">Total Amount Spent </td>
+							<td style="border-top:1px solid grey;" colspan="3">&#8377; {{totalAmt}}</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+				<div class="flex justify-center align-center" style="margin-top:2vw;">
+					<button name="calc" style="height:3vw;" ng-click="distributeAmt()">Distribute Money</button>
+				</div>
+			</div>
+		</div>
+		
+		<div id="page2" ng-hide="page1">
+			<div class="flex justify-center" style="margin:0vw 60vw 0vw 0vw;cursor:pointer;" data-ng-click="distributeAmt()" >Go Back</div>
+			<div class="flex justify-center">
+				<table border="1">
+					<thead>
+						<tr>
+							<th>Sr. No.</th>
+							<th>Contributor Name</th>
+							<th>Contribution Amount</th>
+							<th>Description</th>
+							<th>Debit/Credit</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="obj in masterList">
+							<td data-ng-bind="$index+1"></td>
+							<td data-ng-bind="obj.contiName"></td>
+							<td data-ng-bind="obj.contiAmt"></td>
+							<td data-ng-bind="obj.desc"></td>
+							<td data-ng-bind="obj.balance"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		</div>
+		<script src="js/controller.js"></script>
+    </body>
+</html>
